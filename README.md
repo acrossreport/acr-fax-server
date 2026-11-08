@@ -47,7 +47,7 @@ Actively developed alongside ACR, in day-to-day internal use. Office-document co
 ## Related
 
 - **ACR (Across Report)** — the report engine whose output this server faxes
-- **ACR FAX Client** — the Windows desktop app built on top of this server
+- **ACR FAX Client** — the desktop app built on top of this server (Avalonia UI; Windows today, see "Cross-platform by design" above)
 
 ## Looking for partners
 

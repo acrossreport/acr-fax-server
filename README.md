@@ -42,3 +42,7 @@ Actively developed alongside ACR, in day-to-day internal use. Office-document co
 
 - **ACR (Across Report)** — the report engine whose output this server faxes
 - **ACR FAX Client** — the Windows desktop app built on top of this server
+
+## Looking for partners
+
+This is ultimately a project we can't carry alone — we're looking for partners to help take it further (integration, distribution, hardware, field testing, you name it). **For now we're focused on partners in Japan.** Interested? [Open an issue](../../issues) and let's talk.

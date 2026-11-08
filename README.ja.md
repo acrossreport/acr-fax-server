@@ -34,6 +34,12 @@ flowchart TD
 | PDF → TIFF | 作成した帳票をFAX送信 |
 | PNG → TIFF | 画面キャプチャ・スキャン画像をFAX送信 |
 
+## マルチプラットフォームを見据えた設計
+
+`acr_fax_server` は **Rust** で書かれており、同じソースからWindows・Linux・macOS向けにビルドできます。現時点ではWindows上でビルド・実行しています。
+
+HylaFAX自体はLinux専用なので、HylaFAXの側は必然的にLinuxが必要です。これはこのサーバー自体の移植性とは別の話です。今後の課題として、`acr_fax_server` 自体を **WSL** 上で動かし、HylaFAX以外をWindows1台にまとめられるかを検証する予定です。まだ未検証です。
+
 ## 現在の状況
 
 ACRと並行して日々開発・社内実運用中です。Office文書の変換対応は実装済みですが、検証が完了するまで意図的にここには記載していません。

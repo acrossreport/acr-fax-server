@@ -34,6 +34,12 @@ flowchart TD
 | PDF → TIFF | Sending a finished report by fax |
 | PNG → TIFF | Sending a screen capture / scanned image by fax |
 
+## Cross-platform by design
+
+`acr_fax_server` is written in **Rust**, which builds for Windows, Linux and macOS from the same source. Today it's built and run on Windows.
+
+HylaFAX itself only runs on Linux, so the HylaFAX side of the picture is Linux by necessity — that's separate from this server's own portability. What's on our radar: running `acr_fax_server` itself under **WSL**, so everything but HylaFAX can live on one Windows machine. Not yet verified.
+
 ## Status
 
 Actively developed alongside ACR, in day-to-day internal use. Office-document conversion support is implemented upstream but intentionally left undocumented here until it's fully verified.

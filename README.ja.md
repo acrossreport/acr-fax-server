@@ -1,0 +1,44 @@
+# ACR FAX Server
+
+[English version is here](README.md)
+
+**ACR (Across Report)** が作った帳票や画像を、余計な変換作業なしでそのままFAX送信できるようにする、HylaFAXのプロトコルを直接話す軽量クライアントです。
+
+> **ACRは日々進化し続けています。** このFAX送信の仕組みは意図的にシンプル（PDF/PNGを入れてFAXジョブを出すだけ）に保っており、ACRのレンダリングエンジンに新しい帳票レイアウトや出力形式が加わっても使い続けられるようにしています。
+
+---
+
+## 全体像
+
+```mermaid
+flowchart TD
+    A["Avalonia UI<br/>FAX管理・帳票設定・送受信・プレビュー"]
+    B["ACR Engine<br/>帳票レンダリング"]
+    C["PDF出力"]
+    D["PNG出力"]
+    E["TIFF / TIFF-F変換<br/>解像度・白黒2値・圧縮形式"]
+    F["HylaFAX<br/>送信キュー・モデム制御・送信結果管理"]
+
+    A --> B
+    B --> C
+    B --> D
+    C --> E
+    D --> E
+    E --> F
+```
+
+`acr_fax_server` はレポートエンジンの出力とHylaFAXの間に位置します。PDFまたはPNGを受け取り、必要に応じてFAX送信可能なTIFFへ変換したうえで、HylaFAX自身のプロトコルでジョブを投入します（`sendfax`/`faxstat` のラップではありません）。
+
+| 入力 | 主な用途 |
+|---|---|
+| PDF → TIFF | 作成した帳票をFAX送信 |
+| PNG → TIFF | 画面キャプチャ・スキャン画像をFAX送信 |
+
+## 現在の状況
+
+ACRと並行して日々開発・社内実運用中です。Office文書の変換対応は実装済みですが、検証が完了するまで意図的にここには記載していません。
+
+## 関連
+
+- **ACR (Across Report)** — このサーバーが送信する帳票を生成するエンジン
+- **ACR FAX Client** — このサーバーを利用するWindowsデスクトップアプリ
